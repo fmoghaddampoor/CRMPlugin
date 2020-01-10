@@ -21,14 +21,12 @@ if (typeof (Reply.contoso.account) === "undefined") {
 
         // Primary control option pass execution context to this
         // function in crm if executed from ribbon workbench
-        btnAlert_OnClick: function (executionContext) {
+        btnAlert_OnClick: function (primaryControl) {
             console.log("On click is called");  
             /*The debugger statement invokes any available debugging functionality,
             * such as setting a breakpoint.If no debugging functionality is available,
             * this statement has no effect.*/
             debugger;
-            // Needed as xrm.page is deprecated for getting the id
-            var formContext = executionContext.getFormContext();
 
             // Data should be passed to the acction caller call function
             var data =
@@ -39,7 +37,7 @@ if (typeof (Reply.contoso.account) === "undefined") {
                     "@odata.type": "Microsoft.Dynamics.CRM.account",
                     //account_id is primary key of account entity
                     //The id of entity comes with {} so we need to replace them
-                    "accountid": formContext.data.entity.getId().replace('{', '').replace('}', '')
+                    "accountid": primaryControl.data.entity.getId().replace('{', '').replace('}', '')
                 }
             }
 
