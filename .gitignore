@@ -2,3 +2,5 @@ packages/
 MyFirstPluginCollection/bin
 MyFirstPluginCollection/obj
 /.vs/MyFirstPluginCollection/v16
+/TestCWA/bin/Debug
+/TestCWA/obj/Debug
