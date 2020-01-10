@@ -18,8 +18,12 @@ if (typeof (Reply.contoso) === "undefined") {
 //Namespace Reply.contoso.account functions
 if (typeof (Reply.contoso.account) === "undefined") {
     Reply.contoso.account = {
-        btnAlert_OnClick: function () {
+
+        // Primary control option pass execution context to this
+        // function in crm if executed from ribbon workbench
+        btnAlert_OnClick: function (executionContext) {
             console.log("On click is called");  
+            var formContext = executionContext.getFormContext();
             var data =
             {
                 //Account comes from input process arguments for entity reference type
@@ -28,7 +32,7 @@ if (typeof (Reply.contoso.account) === "undefined") {
                     "@odata.type": "Microsoft.Dynamics.CRM.account",
                     //account_id is primary key of account entity
                     //The id of entity comes with {} so we need to replace them
-                    "accountid": Xrm.Page.data.entity.getId().replace('{', '').replace('}', '')
+                    "accountid": formContext.data.entity.getId().replace('{', '').replace('}', '')
                 }
             }
 
