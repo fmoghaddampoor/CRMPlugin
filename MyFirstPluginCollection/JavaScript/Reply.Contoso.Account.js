@@ -23,7 +23,10 @@ if (typeof (Reply.contoso.account) === "undefined") {
         // function in crm if executed from ribbon workbench
         btnAlert_OnClick: function (executionContext) {
             console.log("On click is called");  
-
+            /*The debugger statement invokes any available debugging functionality,
+            * such as setting a breakpoint.If no debugging functionality is available,
+            * this statement has no effect.*/
+            debugger;
             // Needed as xrm.page is deprecated for getting the id
             var formContext = executionContext.getFormContext();
 
@@ -41,15 +44,19 @@ if (typeof (Reply.contoso.account) === "undefined") {
             }
 
             // Called if action caller is failed
-            function onError()
+            function onError(error)
             {
                 window.Xrm.Navigation.openAlertDialog({ text: error.error.message });
             }
 
-            // Called if action caller s successful
-            function onSuccess()
+            // Called if action caller is successful
+            function onSuccess(response)
             {
-
+                var entityFormOptions = {};
+                entityFormOptions["entityName"] = "account";
+                entityFormOptions["entityId"] = "";
+                //Open the enitity  
+                Xrm.Navigation.openForm(entityFormOptions, formParameters);
             }
 
             // Call action
