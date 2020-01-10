@@ -47,6 +47,7 @@ if (typeof (Reply.contoso.account) === "undefined") {
             {
 
             }
+
             // call action
             Actioncaller.call("cr1b8_myprocess", data, null, onError, onSuccess);
         }
