@@ -35,8 +35,8 @@ ActionCaller.call = function (actionName, actionData, target, onError, onSuccess
         if (req.readyState === 4 && (req.status === 500 || req.status === 400)) {
             var responseErr = JSON.parse(req.response);
             onError(responseErr);
-
-        } else if (req.readyState === 4) {
+        }
+        else if (req.readyState === 4) {
             if (req.response) {
                 debugger;
                 var response = JSON.parse(req.response);
