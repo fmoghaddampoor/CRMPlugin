@@ -23,7 +23,11 @@ if (typeof (Reply.contoso.account) === "undefined") {
         // function in crm if executed from ribbon workbench
         btnAlert_OnClick: function (executionContext) {
             console.log("On click is called");  
+
+            // Needed as xrm.page is deprecated for getting the id
             var formContext = executionContext.getFormContext();
+
+            // Data should be passed to the acction caller call function
             var data =
             {
                 //Account comes from input process arguments for entity reference type
@@ -36,19 +40,19 @@ if (typeof (Reply.contoso.account) === "undefined") {
                 }
             }
 
-            // called if action caller is failed
+            // Called if action caller is failed
             function onError()
             {
                 window.Xrm.Navigation.openAlertDialog({ text: error.error.message });
             }
 
-            // called if action caller s successful
+            // Called if action caller s successful
             function onSuccess()
             {
 
             }
 
-            // call action
+            // Call action
             Actioncaller.call("cr1b8_myprocess", data, null, onError, onSuccess);
         }
     };
