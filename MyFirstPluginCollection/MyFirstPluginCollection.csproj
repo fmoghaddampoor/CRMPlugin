@@ -72,7 +72,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CWA\FieldsTask.cs" />
+    <Compile Include="CWA\MyCodeActivity.cs" />
     <Compile Include="Query\EntityResult.cs" />
     <Compile Include="Query\ITargetQueryable.cs" />
     <Compile Include="OnNewAccountCreatedMessageError.cs" />

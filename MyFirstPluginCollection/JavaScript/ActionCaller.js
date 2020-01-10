@@ -1,14 +1,18 @@
 ﻿if (typeof (ActionCaller) === "undefined") {
     var ActionCaller = {};
 }
+
 if (typeof (ActionCaller.WEBAPI_Version) === "undefined") {
     ActionCaller.WEBAPI_Version = "v9.0";
 }
 
 ActionCaller.call = function (actionName, actionData, target, onError, onSuccess) {
 
-
+    /*The debugger statement invokes any available debugging functionality,
+     * such as setting a breakpoint.If no debugging functionality is available,
+     * this statement has no effect.*/
     debugger;
+
     var requestName = actionName;
     if (target !== null) {
         var entityId = target.id;
