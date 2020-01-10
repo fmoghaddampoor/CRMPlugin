@@ -52,13 +52,13 @@ if (typeof (Reply.contoso.account) === "undefined") {
             {
                 var entityFormOptions = {};
                 entityFormOptions["entityName"] = "account";
-                entityFormOptions["entityId"] = "";
+                entityFormOptions["entityId"] = response.accountid;
                 //Open the enitity  
-                Xrm.Navigation.openForm(entityFormOptions, formParameters);
+                Xrm.Navigation.openForm(entityFormOptions);
             }
 
             // Call action
-            Actioncaller.call("cr1b8_myprocess", data, null, onError, onSuccess);
+            ActionCaller.call("cr1b8_myprocess", data, null, onError, onSuccess);
         }
     };
 }
