@@ -91,7 +91,6 @@
     <Compile Include="OnNewAccountCreatedMessageError.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Query\QueryTarget.cs" />
-    <Compile Include="Query\SearchResult.cs" />
     <Compile Include="Query\UpdateResult.cs" />
     <Compile Include="Utils\Extension.cs" />
     <Compile Include="Utils\PluginContext.cs" />

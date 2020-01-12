@@ -11,6 +11,7 @@ namespace MyFirstPluginCollection.Query
     /// </summary>
     public class QueryTarget : ITargetQueryable
     {
+        private IServiceProvider _serviceProvider;
         private PluginContext _pluginContext;
         private QueryExpression _queryAccess;
         /// <summary>
@@ -19,9 +20,10 @@ namespace MyFirstPluginCollection.Query
         /// <param name="context">
         /// context [Ex: Plugin context]
         /// </param>
-        public QueryTarget(PluginContext context)
+        public QueryTarget(IServiceProvider serviceProvider)
         {
-            _pluginContext = context;
+            _serviceProvider = serviceProvider;
+            _pluginContext = new PluginContext(serviceProvider);
         }
 
         /// <summary>
@@ -39,7 +41,7 @@ namespace MyFirstPluginCollection.Query
         /// <returns>
         /// Returns the entity that is found in search result
         /// </returns>
-        public SearchTableResult SearchTable(string tableName, string fieldLogicalValue, string fieldValue)
+        public EntityResult SearchTable(string tableName, string fieldLogicalValue, string fieldValue)
         {
             _queryAccess = new QueryExpression(tableName);
             // Control field value is given
@@ -47,7 +49,7 @@ namespace MyFirstPluginCollection.Query
             // Do not lock the record so other users can access the searcched record
             _queryAccess.NoLock = true;
             // Return result including entity found
-            return new SearchTableResult() {entity= _pluginContext.CrmServiceSystem.RetrieveMultiple(_queryAccess).Entities.FirstOrDefault() };
+            return new EntityResult() {entity= _pluginContext.CrmServiceSystem.RetrieveMultiple(_queryAccess).Entities.FirstOrDefault() };
         }
 
         /// <summary>

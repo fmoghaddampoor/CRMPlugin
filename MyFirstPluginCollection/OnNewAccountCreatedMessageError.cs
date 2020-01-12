@@ -8,8 +8,7 @@ namespace MyFirstPluginCollection
     {
         public void Execute(IServiceProvider serviceProvider)
         {
-            var pluginContext = new PluginContext(serviceProvider);
-            Query.QueryTarget queryTarget = new Query.QueryTarget(pluginContext);
+            Query.QueryTarget queryTarget = new Query.QueryTarget(serviceProvider);
             var preImage = queryTarget.GetPreImage();
         }
     }
