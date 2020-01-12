@@ -9,7 +9,6 @@ namespace MyFirstPluginCollection
         public void Execute(IServiceProvider serviceProvider)
         {
             var pluginContext = new PluginContext(serviceProvider);
-            var targetEntity = pluginContext.GetTarget();
             Query.QueryTarget queryTarget = new Query.QueryTarget(pluginContext);
             var preImage = queryTarget.GetPreImage();
         }

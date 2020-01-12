@@ -124,5 +124,16 @@ namespace MyFirstPluginCollection.Query
         {
             return new EntityResult() { entity = _pluginContext.GetPreImage() };
         }
+
+        /// <summary>
+        /// Get target entity (The entity which was target of user)
+        /// </summary>
+        /// <returns>
+        /// target entity
+        /// </returns>
+        public EntityResult GetTarget()
+        {
+            return new EntityResult() { entity = _pluginContext.GetTarget() };
+        }
     }
 }
