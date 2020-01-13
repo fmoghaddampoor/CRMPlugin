@@ -6,6 +6,5 @@
         UpdateCellResult UpdateCell(string tableName, int RecordId, string fieldLogicalValue, string fieldValue);
         EntityResult GetPostImage();
         EntityResult GetPreImage();
-
     }
 }
