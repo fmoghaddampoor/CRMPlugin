@@ -9,6 +9,8 @@ using System.Data;
 using System.Text;
 using System;
 using Microsoft.Xrm.Sdk;
+using Microsoft.Xrm.Sdk.Messages;
+using System.Threading.Tasks;
 
 namespace CSVDataUploaderAdvanced
 {
@@ -18,6 +20,27 @@ namespace CSVDataUploaderAdvanced
         {
             var organizationServiceProxy = new OrganizationServiceProxy(GetUri(), null, GetClientCredentials(), null);
             DataTable csvDataTable = GetCSVData();
+            ExecuteMultipleRequest executeMultipleRequest1 = new ExecuteMultipleRequest()
+            {
+                Settings = new ExecuteMultipleSettings
+                {
+                    ContinueOnError = true,
+                    ReturnResponses = true
+                }
+                ,
+                Requests = new OrganizationRequestCollection()
+            };
+            ExecuteMultipleRequest executeMultipleRequest2 = new ExecuteMultipleRequest()
+            {
+                Settings = new ExecuteMultipleSettings
+                {
+                    ContinueOnError = true,
+                    ReturnResponses = true
+                }
+                ,
+                Requests = new OrganizationRequestCollection()
+            };
+            int counter = 0;
             for (int locIndexRow=1; locIndexRow< csvDataTable.Rows.Count; locIndexRow++)
             {
                 string name = csvDataTable.Rows[locIndexRow][0].ToString();
@@ -33,13 +56,59 @@ namespace CSVDataUploaderAdvanced
                 {
                     EntityReference primaryContactReference = queryResult.ToEntityReference();
                     Entity customEntity = CreateCustomEntity("account", name, primaryContactReference, telephone1);
-                    Guid myGuid = organizationServiceProxy.Create(customEntity);
-                    if (myGuid != Guid.Empty)
+                    UpsertRequest upsertRequest = new UpsertRequest()
                     {
-                        Console.WriteLine(name + "account is created with guid" + myGuid.ToString());
+                        Target = customEntity
+                    };
+                    if(locIndexRow % 2 == 0)
+                    {
+                        executeMultipleRequest1.Requests.Add(upsertRequest);
                     }
+                    else
+                    {
+                        executeMultipleRequest2.Requests.Add(upsertRequest);
+                    }
+                    counter++;
+                    Console.WriteLine($"Request {counter} added");
                 }
             }
+            Console.WriteLine("Started executing request.");
+            Task.WaitAll(Task.Run(()=> 
+            {
+                ExecuteMultipleResponse executeMultipleResponse = (ExecuteMultipleResponse)organizationServiceProxy.Execute(executeMultipleRequest1); 
+                foreach(var response in executeMultipleResponse.Responses)
+                {
+                    if(response.Fault!=null)
+                    {
+                        Console.WriteLine(response.Fault.Message);
+                    }
+                    else
+                    {
+                        Console.WriteLine("Request1 executed done!");
+                    }
+                }
+   
+            }),
+            Task.Run(() =>
+            {
+                ExecuteMultipleResponse executeMultipleResponse = (ExecuteMultipleResponse)organizationServiceProxy.Execute(executeMultipleRequest2);
+                foreach (var response in executeMultipleResponse.Responses)
+                {
+                    if (response.Fault != null)
+                    {
+                        Console.WriteLine(response.Fault.Message);
+                    }
+                    else
+                    {
+                        Console.WriteLine("Request2 executed done!");
+                    }
+                }
+
+            }));
+            executeMultipleRequest1.Requests.Clear();
+            executeMultipleRequest2.Requests.Clear();
+            Console.WriteLine("Requests have been executed");
+            Console.ReadLine();
         }
 
         private static Entity CreateCustomEntity(string tableName, string name, EntityReference primaryContact , string telephone1)
