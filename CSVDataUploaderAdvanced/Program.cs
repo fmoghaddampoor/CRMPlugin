@@ -191,7 +191,6 @@ namespace CSVDataUploaderAdvanced
             {
                 dicCharCount[delimiter] = input.Count(t => t == delimiter);
             }
-
             return dicCharCount.OrderByDescending(x => x.Value).First().Key;
         }
     }
