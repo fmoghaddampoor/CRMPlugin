@@ -185,7 +185,7 @@ namespace CSVDataUploaderAdvanced
 
         private static char GetFileDelimiter(string input)
         {
-            List<char> delimiters = new List<char> { ' ', ';', '-' , ','};
+            List<char> delimiters = new List<char> { ' ', ';', '-' , ',', '|'};
             Dictionary<char, int> dicCharCount = delimiters.ToDictionary(key => key, value => 0);
             foreach (char delimiter in delimiters)
             {
