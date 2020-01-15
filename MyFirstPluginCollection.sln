@@ -15,6 +15,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSVDataUploaderUsingTinyCSV
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleCSVWriterWithReflection", "SimpleCSVWriterWithReflection\SimpleCSVWriterWithReflection.csproj", "{2FAFCDDE-2124-4C77-92B3-3412C18A43D9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleCSVWriterWithReflectionSpecialCharacters", "SimpleCSVWriterWithReflectionSpecialCharacters\SimpleCSVWriterWithReflectionSpecialCharacters.csproj", "{EC8F459A-718F-4AB8-9078-10243B638AD7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleCSVWriterWithReflectionSpecialCharactersNAParams", "SimpleCSVWriterWithReflectionSpecialCharactersNAParams\SimpleCSVWriterWithReflectionSpecialCharactersNAParams.csproj", "{DCB65C2D-1771-48A3-8B49-DF28DD65A087}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleCSVWriterWithReflectionSpecialCharactersNAParamsLinked", "SimpleCSVWriterWithReflectionSpecialCharactersNAParamsLinked\SimpleCSVWriterWithReflectionSpecialCharactersNAParamsLinked.csproj", "{4034B6D7-D9DF-419F-AE4A-923191B54109}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +51,18 @@ Global
 		{2FAFCDDE-2124-4C77-92B3-3412C18A43D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2FAFCDDE-2124-4C77-92B3-3412C18A43D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2FAFCDDE-2124-4C77-92B3-3412C18A43D9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EC8F459A-718F-4AB8-9078-10243B638AD7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EC8F459A-718F-4AB8-9078-10243B638AD7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EC8F459A-718F-4AB8-9078-10243B638AD7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EC8F459A-718F-4AB8-9078-10243B638AD7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DCB65C2D-1771-48A3-8B49-DF28DD65A087}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DCB65C2D-1771-48A3-8B49-DF28DD65A087}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DCB65C2D-1771-48A3-8B49-DF28DD65A087}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DCB65C2D-1771-48A3-8B49-DF28DD65A087}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4034B6D7-D9DF-419F-AE4A-923191B54109}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4034B6D7-D9DF-419F-AE4A-923191B54109}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4034B6D7-D9DF-419F-AE4A-923191B54109}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4034B6D7-D9DF-419F-AE4A-923191B54109}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

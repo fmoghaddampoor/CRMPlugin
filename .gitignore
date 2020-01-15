@@ -13,3 +13,9 @@ MyFirstPluginCollection/obj
 /CSVDataUploaderUsingTinyCSVParser/obj/Debug
 /SimpleCSVWriterWithReflection/bin/Debug
 /SimpleCSVWriterWithReflection/obj/Debug
+/SimpleCSVWriterWithReflectionSpecialCharacters/obj/Debug
+/SimpleCSVWriterWithReflectionSpecialCharactersNAParams/bin/Debug
+/SimpleCSVWriterWithReflectionSpecialCharactersNAParams/obj/Debug
+/SimpleCSVWriterWithReflectionSpecialCharactersNAParamsLinked/bin/Debug
+/SimpleCSVWriterWithReflectionSpecialCharactersNAParamsLinked/obj/Debug
+/SimpleCSVWriterWithReflectionSpecialCharacters/bin/Debug
