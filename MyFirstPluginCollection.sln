@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSVDataUploader", "CSVDataU
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSVDataUploaderAdvanced", "CSVDataUploaderAdvanced\CSVDataUploaderAdvanced.csproj", "{F552B08B-0C3C-44CE-B6AD-4A3CD4611723}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSVDataUploaderUsingTinyCSVParser", "CSVDataUploaderUsingTinyCSVParser\CSVDataUploaderUsingTinyCSVParser.csproj", "{54BEEAF5-3EF5-4D7E-945D-439C25582378}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{F552B08B-0C3C-44CE-B6AD-4A3CD4611723}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F552B08B-0C3C-44CE-B6AD-4A3CD4611723}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F552B08B-0C3C-44CE-B6AD-4A3CD4611723}.Release|Any CPU.Build.0 = Release|Any CPU
+		{54BEEAF5-3EF5-4D7E-945D-439C25582378}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{54BEEAF5-3EF5-4D7E-945D-439C25582378}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{54BEEAF5-3EF5-4D7E-945D-439C25582378}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{54BEEAF5-3EF5-4D7E-945D-439C25582378}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

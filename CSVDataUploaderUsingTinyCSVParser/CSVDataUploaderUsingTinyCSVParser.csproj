@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{F552B08B-0C3C-44CE-B6AD-4A3CD4611723}</ProjectGuid>
+    <ProjectGuid>{54BEEAF5-3EF5-4D7E-945D-439C25582378}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <RootNamespace>CSVDataUploader</RootNamespace>
     <AssemblyName>CSVDataUploader</AssemblyName>
@@ -56,9 +56,6 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
-    <Reference Include="TinyCsvParser, Version=2.5.2.0, Culture=neutral, PublicKeyToken=d7df35b038077099, processorArchitecture=MSIL">
-      <HintPath>..\packages\TinyCsvParser.2.5.2\lib\net45\TinyCsvParser.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Program.cs" />
