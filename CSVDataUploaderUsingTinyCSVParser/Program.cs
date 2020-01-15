@@ -11,6 +11,8 @@ using System;
 using Microsoft.Xrm.Sdk;
 using Microsoft.Xrm.Sdk.Messages;
 using System.Threading.Tasks;
+using TinyCsvParser;
+using CSVDataUploader;
 
 namespace CSVDataUploaderAdvanced
 {
@@ -146,21 +148,27 @@ namespace CSVDataUploaderAdvanced
 
         private static DataTable GetCSVData()
         {
+            CsvParserOptions csvParserOptions = new CsvParserOptions(false, ',');
+            CsvPersonMapping csvMapper = new CsvPersonMapping();
+            CsvParser<Account> csvParser = new CsvParser<Account>(csvParserOptions, csvMapper);
+
+            var csvResult = csvParser
+                .ReadFromFile(GetFilePath(), Encoding.UTF8)
+                .ToList();
+
             DataTable dt = null;
-            string[] csvLines = ReadFileLines(GetFilePath());
-            if(csvLines.Length > 0)
+            if (csvResult.Count > 0)
             {
-                char delimiter = GetFileDelimiter(csvLines[0]);
                 dt = new DataTable();
-                for (int locIndexLine = 0; locIndexLine < csvLines.Length; locIndexLine++)
+                dt.Columns.Add("Name");
+                dt.Columns.Add("PrimaryContactId");
+                dt.Columns.Add("Telephone1");
+                for (int locIndexLine = 0; locIndexLine < csvResult.Count; locIndexLine++)
                 {
-                    string[] cells = csvLines[locIndexLine].Split(new char[] { delimiter });
                     dt.Rows.Add();
-                    for (int locIndexPart=0; locIndexPart< cells.Length; locIndexPart++)
-                    {
-                        dt.Columns.Add();
-                        dt.Rows[locIndexLine][locIndexPart] = cells[locIndexPart];
-                    }
+                    dt.Rows[locIndexLine]["Name"] = csvResult[locIndexLine].Result.Name;
+                    dt.Rows[locIndexLine]["PrimaryContactId"] = csvResult[locIndexLine].Result.PrimaryContactId;
+                    dt.Rows[locIndexLine]["Telephone1"] = csvResult[locIndexLine].Result.Telephone1;
                 }
             }
             return dt;

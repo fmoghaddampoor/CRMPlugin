@@ -12,6 +12,11 @@ namespace CSVDataUploader
 
         public string PrimaryContactId { get; set; }
 
-        public DateTime Telephone1 { get; set; }
+        public string Telephone1 { get; set; }
+
+        public static int GetPropertyCount()
+        {
+            return typeof(Account).GetProperties().Count();
+        }
     }
 }
