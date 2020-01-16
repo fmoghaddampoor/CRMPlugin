@@ -26,7 +26,7 @@ namespace CSVManager
         public Address Address { get; set; }
         public override string ToString()
         {
-            return Name + " " + Lastname + " " + Address;
+            return $"{Name} {Lastname} {Address}";
         }
     }
 }

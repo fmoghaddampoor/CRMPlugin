@@ -12,64 +12,100 @@ namespace TableReader
     {
         private readonly string _filePath;
         private readonly string _sheetName;
+        private bool _isFileFound;
+        private bool _isFileSupported;
         public OpenXMLReader(string path, string sheetName)
         {
             _filePath = path;
             _sheetName = sheetName;
+            _isFileFound = IsFileFound(path);
+            _isFileSupported = IsFileSupported(path);
+
         }
         public ReadResult Read()
         {
             ReadResult readResult = new ReadResult();
-            if (!File.Exists(_filePath))
+            if (!_isFileFound || !_isFileSupported) return new ReadResult() { Table = null, IsFileFound = _isFileFound, IsFileTypeSupported = _isFileSupported };
+            DataTable dt = ReadExcelFile();
+            readResult = new ReadResult() { Table = dt, IsFileFound = true, IsFileTypeSupported = true };
+            return readResult;
+        }
+
+        private string CopyFileToAppData()
+        {
+            // The folder for the roaming current user 
+            string appDataFolder = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+            // Combine the base folder with your specific folder....
+            string specificFolder = Path.Combine(appDataFolder, "OpenXML");
+            // CreateDirectory will check if folder exists and, if not, create it.
+            // If folder exists then CreateDirectory will do nothing.
+            Directory.CreateDirectory(specificFolder);
+            string outputPath = Path.Combine(specificFolder, Path.GetFileName(_filePath));
+            using (var inputFile = new FileStream(_filePath, FileMode.Open, FileAccess.Read, FileShare.ReadWrite))
             {
-                readResult = new ReadResult() { Table = null, TableFileFound = false };
-            }
-            else
-            {
-                var fileExtension = Path.GetExtension(_filePath);
-                List<string> lstSupportedFileTypes = new List<string>() { ".xlsx", ".xlsm" };
-                if (!lstSupportedFileTypes.Contains(fileExtension))
+                using (var outputFile = new FileStream(outputPath, FileMode.Create))
                 {
-                    readResult = new ReadResult() { Table = null, TableFileFound = true, IsFileTypeSupported = false };
-                }
-                else
-                {
-                    readResult = new ReadResult() { Table = new DataTable(), TableFileFound = true, IsFileTypeSupported = true };
-                    // Open the document for editing.
-                    using (DocumentFormat.OpenXml.Packaging.SpreadsheetDocument spreadsheetDocument = DocumentFormat.OpenXml.Packaging.SpreadsheetDocument.Open(_filePath, false))
+                    var buffer = new byte[0x10000];
+                    int bytes;
+                    while ((bytes = inputFile.Read(buffer, 0, buffer.Length)) > 0)
                     {
-                        DocumentFormat.OpenXml.Packaging.WorksheetPart worksheetPart = GetWorksheetPartByName(spreadsheetDocument, _sheetName);
-                        DocumentFormat.OpenXml.Spreadsheet.SheetData sheetData = worksheetPart.Worksheet.Elements<DocumentFormat.OpenXml.Spreadsheet.SheetData>().First();
-                        IEnumerable<Row> rows = sheetData.Descendants<Row>();
-                        foreach (Cell cell in rows.ElementAt(0))
-                        {
-                            readResult.Table.Columns.Add(GetCellValue(spreadsheetDocument, cell));
-                        }
-                        foreach (Row row in rows) //this will also include your header row...
-                        {
-                            DataRow tempRow = readResult.Table.NewRow();
-                            for (int i = 0; i < row.Descendants<Cell>().Count(); i++)
-                            {
-                                tempRow[i] = GetCellValue(spreadsheetDocument, row.Descendants<Cell>().ElementAt(i));
-                            }
-                            readResult.Table.Rows.Add(tempRow);
-                        }
+                        outputFile.Write(buffer, 0, bytes);
                     }
                 }
-
             }
-            return readResult;
+            return outputPath;
+        }
+        private DataTable ReadExcelFile()
+        {
+            string outputPath = CopyFileToAppData();
+            DataTable dataTable = new DataTable();
+            using (DocumentFormat.OpenXml.Packaging.SpreadsheetDocument spreadsheetDocument = DocumentFormat.OpenXml.Packaging.SpreadsheetDocument.Open(outputPath, false))
+            {
+                DocumentFormat.OpenXml.Packaging.WorksheetPart worksheetPart = GetWorksheetPartByName(spreadsheetDocument, _sheetName);
+                DocumentFormat.OpenXml.Spreadsheet.SheetData sheetData = worksheetPart.Worksheet.Elements<DocumentFormat.OpenXml.Spreadsheet.SheetData>().First();
+                IEnumerable<Row> rows = sheetData.Descendants<Row>();
+                foreach (Cell cell in rows.ElementAt(0))
+                {
+                    dataTable.Columns.Add(GetCellValue(spreadsheetDocument, cell));
+                }
+                for (int i=1;i< rows.Count()-1;i++)
+                {
+                    DataRow tempRow = dataTable.NewRow();
+                    for (int j = 0; j < rows.ElementAt(i).Descendants<Cell>().Count(); j++)
+                    {
+                        tempRow[j] = GetCellValue(spreadsheetDocument, rows.ElementAt(i).Descendants<Cell>().ElementAt(j));
+                    }
+                    dataTable.Rows.Add(tempRow);
+                }
+            }
+            return dataTable;
+        }
+        private bool IsFileFound(string path)
+        {
+            return File.Exists(path);
+        }
+        private bool IsFileSupported(string path)
+        {
+            if (!_isFileFound) return false;
+            var fileExtension = Path.GetExtension(_filePath);
+            return IsFileExtensionSupported(fileExtension);
+        }
+
+        private bool IsFileExtensionSupported(string extension)
+        {
+            List<string> lstSupportedFileTypes = new List<string>() { ".xlsx", ".xlsm" };
+            return lstSupportedFileTypes.Contains(extension);
         }
 
         public class ReadResult
         {
             public DataTable Table { set; get; }
-            public bool TableFileFound { set; get; }
+            public bool IsFileFound { set; get; }
             public bool IsFileTypeSupported { set; get; }
             public ReadResult() 
             {
                 Table = new DataTable();
-                TableFileFound = true;
+                IsFileFound = true;
                 IsFileTypeSupported = true;
             }
         }
@@ -77,7 +113,7 @@ namespace TableReader
         public void Print()
         {
             ReadResult readResult = Read();
-            if (readResult.TableFileFound)
+            if (readResult.IsFileFound)
             {
                 if (readResult.IsFileTypeSupported)
                 {

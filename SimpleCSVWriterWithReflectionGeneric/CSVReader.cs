@@ -19,7 +19,6 @@ namespace CSVManager
                 do
                 {
                     line = sr.ReadLine();
-
                     if (line != null && headersRead)
                     {
                         var obj = new T();
