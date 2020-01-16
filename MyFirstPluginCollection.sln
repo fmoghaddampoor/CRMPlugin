@@ -21,6 +21,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleCSVWriterWithReflecti
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleCSVWriterWithReflectionSpecialCharactersNAParamsLinked", "SimpleCSVWriterWithReflectionSpecialCharactersNAParamsLinked\SimpleCSVWriterWithReflectionSpecialCharactersNAParamsLinked.csproj", "{4034B6D7-D9DF-419F-AE4A-923191B54109}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleCSVWriterWithReflectionGeneric", "SimpleCSVWriterWithReflectionGeneric\SimpleCSVWriterWithReflectionGeneric.csproj", "{95CCCFC3-9FC8-4D53-8278-900527A47DF5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReplyCSV", "ReplyCSV\ReplyCSV.csproj", "{33E7CF72-6B3B-4648-9B8E-64AAF5CB0B49}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -63,6 +67,14 @@ Global
 		{4034B6D7-D9DF-419F-AE4A-923191B54109}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4034B6D7-D9DF-419F-AE4A-923191B54109}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4034B6D7-D9DF-419F-AE4A-923191B54109}.Release|Any CPU.Build.0 = Release|Any CPU
+		{95CCCFC3-9FC8-4D53-8278-900527A47DF5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{95CCCFC3-9FC8-4D53-8278-900527A47DF5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{95CCCFC3-9FC8-4D53-8278-900527A47DF5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{95CCCFC3-9FC8-4D53-8278-900527A47DF5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{33E7CF72-6B3B-4648-9B8E-64AAF5CB0B49}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{33E7CF72-6B3B-4648-9B8E-64AAF5CB0B49}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{33E7CF72-6B3B-4648-9B8E-64AAF5CB0B49}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{33E7CF72-6B3B-4648-9B8E-64AAF5CB0B49}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
