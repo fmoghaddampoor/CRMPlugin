@@ -29,3 +29,5 @@ MyFirstPluginCollection/obj
 /TestOpenXml/bin
 /OpenXML/bin
 /OpenXML/obj
+/TableReader.UnitTests/obj/Debug
+/TableReader.UnitTests/bin/Debug
