@@ -6,15 +6,10 @@ using System.Data;
 using System.IO;
 using System.Linq;
 
-namespace OpenXML
+namespace TableReader
 {
-    public class ExcelReader
+    public class OpenXMLReader
     {
-        private List<string> lstSupportedFileTypes = null;
-        public ExcelReader()
-        {
-            lstSupportedFileTypes = new List<string>() { ".xlsx", ".xlsm" };
-        }
         public ReadResult Read(string path, string sheetName)
         {
             ReadResult readResult = new ReadResult();
@@ -25,6 +20,7 @@ namespace OpenXML
             else
             {
                 var fileExtension = Path.GetExtension(path);
+                List<string> lstSupportedFileTypes = new List<string>() { ".xlsx", ".xlsm" };
                 if (!lstSupportedFileTypes.Contains(fileExtension))
                 {
                     readResult = new ReadResult() { Table = null, TableFileFound = true, IsFileTypeSupported = false };
@@ -73,7 +69,7 @@ namespace OpenXML
 
         public void Print(string path, string sheetName)
         {
-            ExcelReader excelReader = new ExcelReader();
+            OpenXMLReader excelReader = new OpenXMLReader();
             ReadResult readResult = excelReader.Read(path, sheetName);
             if (readResult.TableFileFound)
             {

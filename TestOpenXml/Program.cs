@@ -1,15 +1,14 @@
 ﻿using System;
-using System.Data;
 using System.IO;
 using System.Reflection;
 
-namespace TestOpenXml
+namespace TestTableReader
 {
     class Program
     {
         static void Main(string[] args)
         {
-            OpenXML.ExcelReader excelReader = new OpenXML.ExcelReader();
+            TableReader.OpenXMLReader excelReader = new TableReader.OpenXMLReader();
             
             excelReader.Print(XLSMFilePath, "Foglio1");
             Console.ReadKey();
@@ -21,6 +20,7 @@ namespace TestOpenXml
 
             excelReader.Print(CiaoFilePath, "Foglio1");
             Console.ReadKey();
+
         }
 
         private static string AssemblyDirectory
@@ -62,6 +62,13 @@ namespace TestOpenXml
             get
             {
                 return Path.Combine(TestFilesDirectory, "Test.ciao");
+            }
+        }
+        private static string CSVFilePath
+        {
+            get
+            {
+                return Path.Combine(TestFilesDirectory, "Test.csv");
             }
         }
     }

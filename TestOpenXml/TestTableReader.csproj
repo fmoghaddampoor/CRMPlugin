@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{DDD2E184-DE2D-481D-BAF7-1C3247ABC477}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>TestOpenXml</RootNamespace>
-    <AssemblyName>TestOpenXml</AssemblyName>
+    <RootNamespace>TestTableReader</RootNamespace>
+    <AssemblyName>TestTableReader</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -51,6 +51,7 @@
     <None Include="TestFile\Test.ciao">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="TestFile\Test.csv" />
     <None Include="TestFile\Test.xlsm">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -59,9 +60,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\OpenXML\OpenXML.csproj">
+    <ProjectReference Include="..\OpenXML\TableReader.csproj">
       <Project>{b52e0415-1bb4-47ce-92fb-c1bb31e3cd3d}</Project>
-      <Name>OpenXML</Name>
+      <Name>TableReader</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

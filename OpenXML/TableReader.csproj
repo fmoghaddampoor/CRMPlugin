@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{B52E0415-1BB4-47CE-92FB-C1BB31E3CD3D}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>OpenXML</RootNamespace>
-    <AssemblyName>OpenXML</AssemblyName>
+    <RootNamespace>TableReader</RootNamespace>
+    <AssemblyName>TableReader</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -47,7 +47,7 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ExcelReader.cs" />
+    <Compile Include="OpenXMLReader.cs" />
     <Compile Include="OpenXML\AdditionalCharacteristics\AdditionalCharacteristicsInfo.cs" />
     <Compile Include="OpenXML\AlternateContent.cs" />
     <Compile Include="OpenXML\AlternateContentChoice.cs" />

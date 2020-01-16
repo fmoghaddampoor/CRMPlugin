@@ -27,9 +27,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReplyCSV", "ReplyCSV\ReplyC
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReplyUploaderExample", "ReplyUploaderExample\ReplyUploaderExample.csproj", "{CEFC549A-A602-4CE8-AB90-810EB585E423}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenXML", "OpenXML\OpenXML.csproj", "{B52E0415-1BB4-47CE-92FB-C1BB31E3CD3D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TableReader", "OpenXML\TableReader.csproj", "{B52E0415-1BB4-47CE-92FB-C1BB31E3CD3D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestOpenXml", "TestOpenXml\TestOpenXml.csproj", "{DDD2E184-DE2D-481D-BAF7-1C3247ABC477}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestTableReader", "TestOpenXml\TestTableReader.csproj", "{DDD2E184-DE2D-481D-BAF7-1C3247ABC477}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
