@@ -10,16 +10,23 @@ namespace TableReader
 {
     public class OpenXMLReader
     {
-        public ReadResult Read(string path, string sheetName)
+        private readonly string _filePath;
+        private readonly string _sheetName;
+        public OpenXMLReader(string path, string sheetName)
+        {
+            _filePath = path;
+            _sheetName = sheetName;
+        }
+        public ReadResult Read()
         {
             ReadResult readResult = new ReadResult();
-            if (!File.Exists(path))
+            if (!File.Exists(_filePath))
             {
                 readResult = new ReadResult() { Table = null, TableFileFound = false };
             }
             else
             {
-                var fileExtension = Path.GetExtension(path);
+                var fileExtension = Path.GetExtension(_filePath);
                 List<string> lstSupportedFileTypes = new List<string>() { ".xlsx", ".xlsm" };
                 if (!lstSupportedFileTypes.Contains(fileExtension))
                 {
@@ -29,9 +36,9 @@ namespace TableReader
                 {
                     readResult = new ReadResult() { Table = new DataTable(), TableFileFound = true, IsFileTypeSupported = true };
                     // Open the document for editing.
-                    using (DocumentFormat.OpenXml.Packaging.SpreadsheetDocument spreadsheetDocument = DocumentFormat.OpenXml.Packaging.SpreadsheetDocument.Open(path, false))
+                    using (DocumentFormat.OpenXml.Packaging.SpreadsheetDocument spreadsheetDocument = DocumentFormat.OpenXml.Packaging.SpreadsheetDocument.Open(_filePath, false))
                     {
-                        DocumentFormat.OpenXml.Packaging.WorksheetPart worksheetPart = GetWorksheetPartByName(spreadsheetDocument, sheetName);
+                        DocumentFormat.OpenXml.Packaging.WorksheetPart worksheetPart = GetWorksheetPartByName(spreadsheetDocument, _sheetName);
                         DocumentFormat.OpenXml.Spreadsheet.SheetData sheetData = worksheetPart.Worksheet.Elements<DocumentFormat.OpenXml.Spreadsheet.SheetData>().First();
                         IEnumerable<Row> rows = sheetData.Descendants<Row>();
                         foreach (Cell cell in rows.ElementAt(0))
@@ -67,10 +74,9 @@ namespace TableReader
             }
         }
 
-        public void Print(string path, string sheetName)
+        public void Print()
         {
-            OpenXMLReader excelReader = new OpenXMLReader();
-            ReadResult readResult = excelReader.Read(path, sheetName);
+            ReadResult readResult = Read();
             if (readResult.TableFileFound)
             {
                 if (readResult.IsFileTypeSupported)

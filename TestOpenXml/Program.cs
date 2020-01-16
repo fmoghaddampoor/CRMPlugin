@@ -8,17 +8,20 @@ namespace TestTableReader
     {
         static void Main(string[] args)
         {
-            TableReader.OpenXMLReader excelReader = new TableReader.OpenXMLReader();
-            
-            excelReader.Print(XLSMFilePath, "Foglio1");
-            Console.ReadKey();
-            excelReader.Print(XLSXFilePath, "Foglio1");
+            TableReader.OpenXMLReader excelReader = new TableReader.OpenXMLReader(XLSMFilePath, "Foglio1");
+            excelReader.Print();
             Console.ReadKey();
 
-            excelReader.Print(@"c:\", "Foglio1");
+            excelReader = new TableReader.OpenXMLReader(XLSXFilePath, "Foglio1");
+            excelReader.Print();
             Console.ReadKey();
 
-            excelReader.Print(CiaoFilePath, "Foglio1");
+            excelReader = new TableReader.OpenXMLReader(@"c:\", "Foglio1");
+            excelReader.Print();
+            Console.ReadKey();
+
+            excelReader = new TableReader.OpenXMLReader(CiaoFilePath, "Foglio1");
+            excelReader.Print();
             Console.ReadKey();
 
         }
