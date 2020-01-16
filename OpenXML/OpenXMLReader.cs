@@ -122,11 +122,8 @@ namespace TableReader
 
                 return null;
             }
-
             string relationshipId = sheets?.First().Id.Value;
-
             WorksheetPart worksheetPart = (WorksheetPart)document.WorkbookPart.GetPartById(relationshipId);
-
             return worksheetPart;
         }
 
