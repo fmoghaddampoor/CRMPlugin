@@ -23,6 +23,7 @@ namespace CSVDataUploaderAdvanced
                 string name = csvDataTable.Rows[locIndexRow][0].ToString();
                 string primaryContact = csvDataTable.Rows[locIndexRow][1].ToString();
                 string telephone1 = csvDataTable.Rows[locIndexRow][2].ToString();
+
                 QueryExpression queryExpression = new QueryExpression("contact");
                 queryExpression.ColumnSet = new ColumnSet(false);
                 queryExpression.NoLock = true;

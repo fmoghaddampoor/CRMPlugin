@@ -12,8 +12,8 @@ namespace CSVManager
         {
             var people = new List<Person>
             {
-                new Person(1, "murat", "aykanat", new Address("city1","country1")),
-                new Person(2, "john", "smith", new Address("city2","country2"))
+                new Person(1, "Farzad", "Moghaddampoor", new Address("Milano","Italy")),
+                new Person(2, "Andrea", "Porelli", new Address("city2","country2"))
             };
 
             var csvWriter = new CSVWriter<Person>();

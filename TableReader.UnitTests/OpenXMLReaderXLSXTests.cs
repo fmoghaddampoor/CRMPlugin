@@ -9,11 +9,11 @@ namespace TableReader.UnitTests
     class OpenXMLReaderXLSXTests
     {
 
-        private TableReader.OpenXMLReader _excelReader = null;
+        private TableReader.XMLReader _excelReader = null;
         [OneTimeSetUp]
         public void ClassInit()
         {
-            _excelReader = new TableReader.OpenXMLReader(XLSXFilePath, Commons.Sheet1);
+            _excelReader = new TableReader.XMLReader(XLSXFilePath, Commons.Sheet1);
         }
 
         [Test]

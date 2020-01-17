@@ -8,12 +8,12 @@ namespace TableReader.UnitTests
     [TestFixture]
     class OpenXMLReaderCiaoTests
     {
-        private TableReader.OpenXMLReader _excelReader = null;
+        private TableReader.XMLReader _excelReader = null;
 
         [OneTimeSetUp]
         public void ClassInit()
         {
-            _excelReader = new TableReader.OpenXMLReader(CiaoFilePath, Commons.Sheet1);
+            _excelReader = new TableReader.XMLReader(CiaoFilePath, Commons.Sheet1);
         }
 
         [Test]
