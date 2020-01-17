@@ -124,7 +124,6 @@ namespace ConfigurationGenerator
             _crmHandler = new CRMHandler.CRMHandler(GetLogin().Uri, GetLogin().Credentials);
             _allEntities = _crmHandler.GetAllEntities();
             _allEntityLogicalNames = _allEntities.Keys.ToList();
-            //_allEntityLogicalNames = _crmHandler.GetAllEntityLogicalNames();
             foreach (var logicalName in _allEntityLogicalNames)
             {
                 cmbEntityLogicalNames.Items.Add(logicalName);

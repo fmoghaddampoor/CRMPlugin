@@ -32,6 +32,7 @@ MyFirstPluginCollection/obj
 /TableReader.UnitTests/obj/Debug
 /TableReader.UnitTests/bin/Debug
 /.vs/Reply/v16/Server/sqlite3
+/.vs/Reply/v16/.suo
 /ConfigurationGenerator/bin/Debug
 /CRMHandler/bin/Debug
 /CRMHandler/obj/Debug
