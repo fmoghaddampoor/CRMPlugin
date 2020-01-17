@@ -33,6 +33,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestTableReader", "TestOpen
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TableReader.UnitTests", "TableReader.UnitTests\TableReader.UnitTests.csproj", "{ADD35B06-773E-4B2C-A7EE-FA7879CE9C84}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConfigurationGenerator", "ConfigurationGenerator\ConfigurationGenerator.csproj", "{4E2E807E-309A-42EA-8AEA-80CDBB23F24F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CRMHandler", "CRMHandler\CRMHandler.csproj", "{29DF336A-BFE3-4A80-924B-8E97C7A987FC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -99,6 +103,14 @@ Global
 		{ADD35B06-773E-4B2C-A7EE-FA7879CE9C84}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ADD35B06-773E-4B2C-A7EE-FA7879CE9C84}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ADD35B06-773E-4B2C-A7EE-FA7879CE9C84}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4E2E807E-309A-42EA-8AEA-80CDBB23F24F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4E2E807E-309A-42EA-8AEA-80CDBB23F24F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4E2E807E-309A-42EA-8AEA-80CDBB23F24F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4E2E807E-309A-42EA-8AEA-80CDBB23F24F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{29DF336A-BFE3-4A80-924B-8E97C7A987FC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{29DF336A-BFE3-4A80-924B-8E97C7A987FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{29DF336A-BFE3-4A80-924B-8E97C7A987FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{29DF336A-BFE3-4A80-924B-8E97C7A987FC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
